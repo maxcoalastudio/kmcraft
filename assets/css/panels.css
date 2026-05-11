@@ -1,0 +1,179 @@
+/* Properties Panel */
+.properties-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: rgba(30,30,30,0.96);
+    backdrop-filter: blur(12px);
+    border-left: 1px solid #3a3a3a;
+    display: flex;
+    z-index: 150;
+    transition: right 0.25s ease;
+}
+
+.properties-panel.visible {
+    right: 0;
+}
+
+.properties-panel:not(.visible) {
+    right: -320px;
+}
+
+.panel-resize {
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    cursor: ew-resize;
+    background: transparent;
+    z-index: 160;
+}
+
+.panel-resize:hover {
+    background: rgba(0,191,255,0.3);
+}
+
+.panel-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 8px;
+    background: #252525;
+    border-right: 1px solid #3a3a3a;
+    width: 48px;
+    flex-shrink: 0;
+}
+
+.panel-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: all 0.15s;
+}
+
+.panel-tab:hover {
+    background: #3a3a3a;
+    color: #ddd;
+}
+
+.panel-tab.active {
+    background: #00BFFF;
+    color: white;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.panel-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+/* Propriedades */
+.prop-section {
+    margin-bottom: 24px;
+}
+
+.prop-header {
+    font-size: 11px;
+    font-weight: 600;
+    color: #00BFFF;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #3a3a3a;
+    text-transform: uppercase;
+}
+
+.prop-group {
+    margin-bottom: 16px;
+}
+
+.prop-group label {
+    display: block;
+    font-size: 10px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+.prop-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1a1a;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #3a3a3a;
+}
+
+.prop-label {
+    font-size: 11px;
+    font-weight: 600;
+    width: 22px;
+}
+
+.prop-label.X { color: #ff6666; }
+.prop-label.Y { color: #66ff66; }
+.prop-label.Z { color: #6666ff; }
+
+.prop-input {
+    flex: 1;
+    background: #252525;
+    border: 1px solid #444;
+    color: #ddd;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: monospace;
+}
+
+.prop-input:focus {
+    outline: none;
+    border-color: #00BFFF;
+}
+
+.prop-color {
+    width: 100%;
+    height: 32px;
+    background: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.prop-slider {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #3a3a3a;
+    border-radius: 2px;
+}
+
+.prop-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00BFFF;
+    cursor: pointer;
+}
