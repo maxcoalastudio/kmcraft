@@ -1,0 +1,524 @@
+/**
+ * Blender-Style Themes for Web Interface
+ * Temas estilo Blender para interface web
+ */
+
+/* Tema Base */
+:root {
+    /* Cores do tema Dark (padrão do Blender) */
+    --blender-dark-bg-primary: #2d2d2d;
+    --blender-dark-bg-secondary: #373737;
+    --blender-dark-bg-tertiary: #404040;
+    --blender-dark-border: #555555;
+    --blender-dark-text-primary: #cccccc;
+    --blender-dark-text-secondary: #aaaaaa;
+    --blender-dark-text-disabled: #666666;
+    --blender-dark-accent: #5b7adb;
+    --blender-dark-accent-hover: #6b8adb;
+    --blender-dark-success: #4caf50;
+    --blender-dark-warning: #ff9800;
+    --blender-dark-error: #f44336;
+
+    /* Cores do tema Light */
+    --blender-light-bg-primary: #f5f5f5;
+    --blender-light-bg-secondary: #e8e8e8;
+    --blender-light-bg-tertiary: #d0d0d0;
+    --blender-light-border: #cccccc;
+    --blender-light-text-primary: #333333;
+    --blender-light-text-secondary: #555555;
+    --blender-light-text-disabled: #999999;
+    --blender-light-accent: #4a90e2;
+    --blender-light-accent-hover: #5ba0e2;
+    --blender-light-success: #4caf50;
+    --blender-light-warning: #ff9800;
+    --blender-light-error: #f44336;
+}
+
+/* Classe base para a interface Blender */
+.blender-interface {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--blender-text-primary);
+    background-color: var(--blender-bg-primary);
+    overflow: hidden;
+}
+
+/* Tema Dark */
+.blender-theme-dark {
+    --blender-bg-primary: var(--blender-dark-bg-primary);
+    --blender-bg-secondary: var(--blender-dark-bg-secondary);
+    --blender-bg-tertiary: var(--blender-dark-bg-tertiary);
+    --blender-border: var(--blender-dark-border);
+    --blender-text-primary: var(--blender-dark-text-primary);
+    --blender-text-secondary: var(--blender-dark-text-secondary);
+    --blender-text-disabled: var(--blender-dark-text-disabled);
+    --blender-accent: var(--blender-dark-accent);
+    --blender-accent-hover: var(--blender-dark-accent-hover);
+    --blender-success: var(--blender-dark-success);
+    --blender-warning: var(--blender-dark-warning);
+    --blender-error: var(--blender-dark-error);
+}
+
+/* Tema Light */
+.blender-theme-light {
+    --blender-bg-primary: var(--blender-light-bg-primary);
+    --blender-bg-secondary: var(--blender-light-bg-secondary);
+    --blender-bg-tertiary: var(--blender-light-bg-tertiary);
+    --blender-border: var(--blender-light-border);
+    --blender-text-primary: var(--blender-light-text-primary);
+    --blender-text-secondary: var(--blender-light-text-secondary);
+    --blender-text-disabled: var(--blender-light-text-disabled);
+    --blender-accent: var(--blender-light-accent);
+    --blender-accent-hover: var(--blender-light-accent-hover);
+    --blender-success: var(--blender-light-success);
+    --blender-warning: var(--blender-light-warning);
+    --blender-error: var(--blender-light-error);
+}
+
+/* Canvas WebGL */
+.blender-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blender-bg-primary);
+    cursor: default;
+}
+
+/* Top Bar (Menu superior) */
+.blender-topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: var(--blender-bg-secondary);
+    border-bottom: 1px solid var(--blender-border);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 1000;
+}
+
+.blender-topbar .menu-item {
+    color: var(--blender-text-primary);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.blender-topbar .menu-item:hover {
+    background-color: var(--blender-bg-tertiary);
+}
+
+.blender-topbar .menu-item.active {
+    background-color: var(--blender-accent);
+    color: white;
+}
+
+/* Status Bar (Barra inferior) */
+.blender-statusbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: var(--blender-bg-secondary);
+    border-top: 1px solid var(--blender-border);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 1000;
+}
+
+.blender-statusbar .status-item {
+    color: var(--blender-text-secondary);
+    font-size: 11px;
+    margin-right: 20px;
+}
+
+/* Área (Panel) */
+.blender-area {
+    position: absolute;
+    background-color: var(--blender-bg-primary);
+    border: 1px solid var(--blender-border);
+    overflow: hidden;
+}
+
+.blender-area-header {
+    height: 20px;
+    background-color: var(--blender-bg-secondary);
+    border-bottom: 1px solid var(--blender-border);
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+/* Abas */
+.blender-tabs {
+    display: flex;
+    flex: 1;
+}
+
+.blender-tab {
+    padding: 2px 8px;
+    margin-right: 2px;
+    background-color: var(--blender-bg-tertiary);
+    color: var(--blender-text-secondary);
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.blender-tab:hover {
+    background-color: var(--blender-bg-secondary);
+    color: var(--blender-text-primary);
+}
+
+.blender-tab.active {
+    background-color: var(--blender-bg-primary);
+    color: var(--blender-text-primary);
+    border-color: var(--blender-border);
+    border-bottom-color: var(--blender-bg-primary);
+}
+
+.blender-area-title {
+    font-size: 11px;
+    color: var(--blender-text-secondary);
+    margin-left: auto;
+    padding-right: 5px;
+}
+
+/* Conteúdo da área */
+.blender-area-content {
+    height: calc(100% - 20px);
+    background-color: var(--blender-bg-primary);
+    overflow: auto;
+}
+
+/* 3D View específico */
+.blender-3d-view {
+    background-color: #1a1a1a;
+}
+
+.blender-3d-view .blender-area-content {
+    background-color: transparent;
+}
+
+/* Outliner */
+.blender-outliner .blender-area-content {
+    background-color: var(--blender-bg-primary);
+}
+
+.blender-outliner-item {
+    padding: 2px 5px;
+    color: var(--blender-text-primary);
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.blender-outliner-item:hover {
+    background-color: var(--blender-bg-tertiary);
+}
+
+.blender-outliner-item.selected {
+    background-color: var(--blender-accent);
+    color: white;
+}
+
+.blender-outliner-item.expanded::before {
+    content: '▼';
+    margin-right: 5px;
+}
+
+.blender-outliner-item.collapsed::before {
+    content: '▶';
+    margin-right: 5px;
+}
+
+/* Properties Panel */
+.blender-properties .blender-area-content {
+    background-color: var(--blender-bg-primary);
+}
+
+.blender-property-group {
+    border-bottom: 1px solid var(--blender-border);
+    margin-bottom: 10px;
+}
+
+.blender-property-group-header {
+    background-color: var(--blender-bg-secondary);
+    padding: 5px;
+    font-weight: bold;
+    font-size: 11px;
+    color: var(--blender-text-primary);
+    cursor: pointer;
+}
+
+.blender-property-group-header::before {
+    content: '▼';
+    margin-right: 5px;
+}
+
+.blender-property-group.collapsed .blender-property-group-header::before {
+    content: '▶';
+}
+
+.blender-property-group.collapsed .blender-property-content {
+    display: none;
+}
+
+.blender-property-item {
+    padding: 3px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.blender-property-label {
+    flex: 1;
+    font-size: 11px;
+    color: var(--blender-text-primary);
+}
+
+.blender-property-input {
+    background-color: var(--blender-bg-tertiary);
+    border: 1px solid var(--blender-border);
+    color: var(--blender-text-primary);
+    padding: 2px 4px;
+    font-size: 11px;
+    border-radius: 2px;
+}
+
+.blender-property-input:focus {
+    outline: none;
+    border-color: var(--blender-accent);
+}
+
+/* Timeline */
+.blender-timeline .blender-area-content {
+    background-color: var(--blender-bg-secondary);
+}
+
+.blender-timeline-header {
+    height: 30px;
+    background-color: var(--blender-bg-tertiary);
+    border-bottom: 1px solid var(--blender-border);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.blender-timeline-playback {
+    display: flex;
+    gap: 5px;
+}
+
+.blender-timeline-button {
+    background-color: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    color: var(--blender-text-primary);
+    padding: 2px 6px;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.blender-timeline-button:hover {
+    background-color: var(--blender-bg-tertiary);
+}
+
+.blender-timeline-button.active {
+    background-color: var(--blender-accent);
+    color: white;
+}
+
+/* Menu dropdown */
+.blender-menu {
+    position: absolute;
+    background-color: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    min-width: 150px;
+}
+
+.blender-menu-item {
+    padding: 5px 10px;
+    color: var(--blender-text-primary);
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.blender-menu-item:hover {
+    background-color: var(--blender-bg-tertiary);
+}
+
+.blender-menu-item.separator {
+    border-top: 1px solid var(--blender-border);
+    margin: 2px 0;
+}
+
+.blender-menu-item.disabled {
+    color: var(--blender-text-disabled);
+    cursor: not-allowed;
+}
+
+.blender-menu-item.disabled:hover {
+    background-color: transparent;
+}
+
+/* Tooltips */
+.blender-tooltip {
+    position: absolute;
+    background-color: var(--blender-bg-tertiary);
+    color: var(--blender-text-primary);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 3000;
+    border: 1px solid var(--blender-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbars customizadas */
+.blender-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.blender-scrollbar::-webkit-scrollbar-track {
+    background-color: var(--blender-bg-secondary);
+}
+
+.blender-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--blender-bg-tertiary);
+    border-radius: 6px;
+    border: 2px solid var(--blender-bg-secondary);
+}
+
+.blender-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blender-border);
+}
+
+.blender-scrollbar::-webkit-scrollbar-corner {
+    background-color: var(--blender-bg-secondary);
+}
+
+/* Animações */
+.blender-fade-in {
+    animation: blenderFadeIn 0.2s ease-in;
+}
+
+@keyframes blenderFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blender-slide-in {
+    animation: blenderSlideIn 0.3s ease-out;
+}
+
+@keyframes blenderSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .blender-topbar {
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .blender-statusbar {
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .blender-area-header {
+        height: 18px;
+    }
+
+    .blender-tab {
+        padding: 1px 6px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blender-topbar .menu-item {
+        padding: 3px 6px;
+        font-size: 11px;
+    }
+
+    .blender-property-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .blender-property-input {
+        width: 100%;
+        margin-top: 2px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .blender-interface {
+        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+/* Focus styles para acessibilidade */
+.blender-tab:focus,
+.blender-menu-item:focus,
+.blender-property-input:focus,
+.blender-timeline-button:focus {
+    outline: 2px solid var(--blender-accent);
+    outline-offset: 1px;
+}
+
+/* Estados de loading */
+.blender-loading {
+    position: relative;
+}
+
+.blender-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--blender-border);
+    border-top: 2px solid var(--blender-accent);
+    border-radius: 50%;
+    animation: blenderSpin 1s linear infinite;
+}
+
+@keyframes blenderSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

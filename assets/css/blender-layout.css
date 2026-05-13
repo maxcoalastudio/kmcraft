@@ -1,0 +1,295 @@
+:root {
+    --blender-bg-primary: #2d2d2d;
+    --blender-bg-secondary: #373737;
+    --blender-bg-tertiary: #404040;
+    --blender-border: #555555;
+    --blender-text-primary: #e5e5e5;
+    --blender-text-secondary: #b8b8b8;
+    --blender-accent: #5b7adb;
+    --blender-accent-hover: #6d8bff;
+    --blender-panel-shadow: rgba(0, 0, 0, 0.35);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--blender-bg-primary);
+    color: var(--blender-text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.blender-topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 4px;
+    padding: 0 12px;
+    box-shadow: 0 4px 12px var(--blender-panel-shadow);
+    height: 34px;
+    flex-shrink: 0;
+}
+
+.blender-topbar .menu-item {
+    color: var(--blender-text-secondary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.blender-topbar .menu-item:hover,
+.blender-topbar .menu-item.active {
+    background: var(--blender-bg-tertiary);
+    color: var(--blender-text-primary);
+}
+
+.layout-workspace {
+    grid-area: workspace;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 8px;
+    position: relative;
+}
+
+.blender-sidepanels {
+    grid-area: sidebar;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+}
+
+.blender-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.blender-area.hidden {
+    display: none;
+}
+
+.blender-area-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+    background: var(--blender-bg-primary);
+    border-bottom: 1px solid var(--blender-border);
+    padding: 0 10px;
+    font-size: 12px;
+    color: var(--blender-text-primary);
+}
+
+.blender-area-title {
+    flex: 1;
+    font-weight: 600;
+}
+
+.blender-area-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.layout-tab {
+    padding: 4px 10px;
+    background: var(--blender-bg-tertiary);
+    color: var(--blender-text-secondary);
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.15s ease;
+}
+
+.layout-tab:hover {
+    background: var(--blender-bg-secondary);
+    color: var(--blender-text-primary);
+}
+
+.layout-tab.active {
+    background: var(--blender-accent);
+    color: #fff;
+    border-color: var(--blender-accent-hover);
+}
+
+.blender-area-content {
+    flex: 1;
+    padding: 12px;
+    overflow: auto;
+    background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent 70%);
+    color: var(--blender-text-primary);
+}
+
+.blender-area.active-panel {
+    border-color: var(--blender-accent);
+    box-shadow: 0 0 0 2px rgba(91, 122, 219, 0.25);
+}
+
+.menu-dropdown {
+    position: absolute;
+    background: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    z-index: 9999;
+    min-width: 180px;
+    padding: 4px 0;
+}
+
+.menu-dropdown-item {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: var(--blender-text-primary);
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.15s ease;
+}
+
+.menu-dropdown-item:hover {
+    background: var(--blender-bg-tertiary);
+}
+
+.blender-statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 5px;
+    padding: 0 12px;
+    font-size: 12px;
+    color: var(--blender-text-secondary);
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.blender-timeline {
+    grid-area: timeline;
+    display: flex;
+    flex-direction: column;
+    background: var(--blender-bg-secondary);
+    border: 1px solid var(--blender-border);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.blender-timeline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: var(--blender-bg-primary);
+    border-bottom: 1px solid var(--blender-border);
+    color: var(--blender-text-primary);
+}
+
+.blender-timeline-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.blender-timeline-button {
+    padding: 5px 10px;
+    border: 1px solid var(--blender-border);
+    border-radius: 4px;
+    background: var(--blender-bg-tertiary);
+    color: var(--blender-text-secondary);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.blender-timeline-button:hover,
+.blender-timeline-button.active {
+    background: var(--blender-bg-secondary);
+    color: var(--blender-text-primary);
+}
+
+.loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(17, 17, 17, 0.8);
+    color: #fff;
+    z-index: 2000;
+}
+
+.loading-overlay .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1150px) {
+    #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 34px 1fr 220px 30px;
+        grid-template-areas:
+            "topbar"
+            "workspace"
+            "timeline"
+            "status";
+    }
+
+    .blender-sidepanels {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, minmax(120px, auto));
+    }
+}
+
+@media (max-width: 760px) {
+    #app {
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .blender-topbar,
+    .blender-statusbar,
+    .blender-area,
+    .blender-timeline {
+        border-radius: 4px;
+    }
+
+    .blender-area-header,
+    .blender-timeline-header {
+        padding: 6px 8px;
+    }
+}

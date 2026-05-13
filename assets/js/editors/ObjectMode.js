@@ -10,21 +10,25 @@ export class ObjectMode {
         this.isActive = true;
         const selected = this.sceneManager.getSelectedObject();
         if (selected) {
-            this.transformGizmo.attachTo(selected);
-            this.transformGizmo.show();
+            this.transformGizmo.attach(selected);
+            this.transformGizmo.visible = true;
+        } else {
+            this.transformGizmo.detach();
+            this.transformGizmo.visible = false;
         }
         this.updateStatus();
     }
     
     exit() {
         this.isActive = false;
-        this.transformGizmo.hide();
+        this.transformGizmo.detach();
+        this.transformGizmo.visible = false;
         this.updateStatus();
     }
     
     selectObject(object) {
         this.sceneManager.selectObject(object);
-        this.transformGizmo.attachTo(object);
+        this.transformGizmo.attach(object);
         this.updateStatus(`Selecionado: ${object.userData.name}`);
     }
     
@@ -48,7 +52,7 @@ export class ObjectMode {
     
     updateStatus(message = null) {
         if (this.onStatusUpdate) {
-            const count = this.sceneManager.getObjectCount();
+            const count = this.sceneManager.gameObjects.length;
             this.onStatusUpdate(message || `Modo Objeto | ${count} objeto(s) na cena`);
         }
     }

@@ -96,8 +96,8 @@
 <body>
     <div class="splash">
         <div class="logo">🎨</div>
-        <div class="title">KM CRAFT</div>
-        <div class="subtitle">UPBGE 2.5 Clone - Three.js Edition</div>
+        <div class="title">WAVE Online</div>
+        <div class="subtitle">WAVE online - Three.js Edition</div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>

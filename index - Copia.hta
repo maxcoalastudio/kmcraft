@@ -1,0 +1,117 @@
+<?php
+/**
+ * KM Craft - Blender UPBGE 2.5 Clone com Three.js
+ * @version 1.0.0
+ */
+
+session_start();
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+
+define('KM_VERSION', '1.0.0');
+define('KM_NAME', 'KM Craft');
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>WAVE online - WAVE Online Motor</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blender-ui.css">
+    <link rel="stylesheet" href="/assets/css/panels.css">
+    <link rel="stylesheet" href="/assets/css/blender-themes.css">
+    <link rel="stylesheet" href="/assets/css/blender-layout.css">
+    <link rel="stylesheet" href="/assets/css/layout-grid.css">
+    
+    <!-- Import Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+<?php
+require_once __DIR__ . '/layout_state.php';
+$layoutState = getCurrentLayoutState();
+
+function renderPanel(array $panel) {
+    $hiddenClass = empty($panel['visible']) ? ' hidden' : '';
+    echo '<section class="blender-area' . $hiddenClass . '" data-panel="' . htmlspecialchars($panel['id']) . '" data-active-tab="' . htmlspecialchars($panel['activeTab']) . '">';
+    echo '<div class="blender-area-header">';
+    echo '<div class="blender-area-title">' . htmlspecialchars($panel['title']) . '</div>';
+    echo '<div class="blender-area-tabs">';
+    foreach ($panel['tabs'] as $tab) {
+        echo '<button type="button" class="layout-tab" data-tab="' . htmlspecialchars($tab) . '">' . htmlspecialchars($tab) . '</button>';
+    }
+    echo '</div>';
+    echo '</div>';
+    echo '<div class="blender-area-content"></div>';
+    echo '</section>';
+}
+?>
+    <div id="app" class="blender-interface blender-theme-dark">
+        <div class="blender-topbar">
+            <?php foreach (['File', 'Edit', 'Game', 'Window', 'Help'] as $menuItem): ?>
+                <div class="menu-item" data-menu="<?= htmlspecialchars($menuItem) ?>"><?= htmlspecialchars($menuItem) ?></div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="layout-grid-container" id="grid-container">
+            <?php
+            if (empty($layoutState['gridLayout']) || empty($layoutState['columnWidths']) || empty($layoutState['rowHeights'])) {
+                $layoutState = getDefaultLayoutState();
+            }
+            
+            $gridLayout = $layoutState['gridLayout'] ?? [];
+            $rows = count($gridLayout);
+            $cols = count($gridLayout[0] ?? []);
+            $columnWidths = $layoutState['columnWidths'] ?? [50, 50];
+            $rowHeights = $layoutState['rowHeights'] ?? [60, 40];
+            $panelsById = [];
+            foreach ($layoutState['panels'] as $panel) {
+                $panelsById[$panel['id']] = $panel;
+            }
+            ?>
+            <?php for ($r = 0; $r < $rows; $r++): ?>
+                <div class="layout-grid-row" style="flex: <?= $rowHeights[$r] ?>;">
+                    <?php for ($c = 0; $c < $cols; $c++): ?>
+                        <?php $panelId = $gridLayout[$r][$c]; ?>
+                        <?php if (isset($panelsById[$panelId])): ?>
+                            <?php $panel = $panelsById[$panelId]; ?>
+                            <div class="layout-grid-cell" data-row="<?= $r ?>" data-col="<?= $c ?>" data-panel="<?= htmlspecialchars($panel['id']) ?>" style="flex: <?= $columnWidths[$c] ?>;">
+                                <?php renderPanel($panel); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($c < $cols - 1): ?>
+                            <div class="layout-splitter-v" data-col-split="<?= $c ?>" data-row="<?= $r ?>"></div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
+                <?php if ($r < $rows - 1): ?>
+                    <div class="layout-splitter-h" data-row-split="<?= $r ?>"></div>
+                <?php endif; ?>
+            <?php endfor; ?>
+        </div>
+
+        <div class="blender-statusbar">
+            <span>✅ WAVE Online pronto</span>
+            <span id="status-coords">Modo: Object</span>
+        </div>
+
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <span>Carregando WAVE Online...</span>
+        </div>
+    </div>
+
+    <script src="/assets/js/window-manager.js"></script>
+    <script type="module" src="/assets/js/app.js"></script>
+</body>
+</html>

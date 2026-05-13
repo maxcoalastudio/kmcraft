@@ -1,0 +1,77 @@
+.layout-grid-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    background: var(--blender-bg-primary);
+    overflow: hidden;
+    gap: 0;
+}
+
+.layout-grid-row {
+    display: flex;
+    flex: 1;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.layout-grid-cell {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--blender-border);
+    background: var(--blender-bg-primary);
+}
+
+/* Divisores horizontais (entre linhas) */
+.layout-splitter-h {
+    height: 8px;
+    background: linear-gradient(180deg, transparent 0%, var(--blender-border) 40%, var(--blender-border) 60%, transparent 100%);
+    cursor: row-resize;
+    transition: background 0.15s ease;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    user-select: none;
+}
+
+.layout-splitter-h:hover {
+    background: linear-gradient(180deg, transparent 0%, var(--blender-accent) 40%, var(--blender-accent) 60%, transparent 100%);
+}
+
+.layout-splitter-h.dragging {
+    background: linear-gradient(180deg, transparent 0%, rgba(91, 122, 219, 0.8) 40%, rgba(91, 122, 219, 0.8) 60%, transparent 100%);
+}
+
+/* Divisores verticais (entre colunas) */
+.layout-splitter-v {
+    width: 8px;
+    background: linear-gradient(90deg, transparent 0%, var(--blender-border) 40%, var(--blender-border) 60%, transparent 100%);
+    cursor: col-resize;
+    transition: background 0.15s ease;
+    z-index: 101;
+    user-select: none;
+    position: relative;
+}
+
+.layout-splitter-v:hover {
+    background: linear-gradient(90deg, transparent 0%, var(--blender-accent) 40%, var(--blender-accent) 60%, transparent 100%);
+}
+
+.layout-splitter-v.dragging {
+    background: linear-gradient(90deg, transparent 0%, rgba(91, 122, 219, 0.8) 40%, rgba(91, 122, 219, 0.8) 60%, transparent 100%);
+}
+
+/* Estado durante arrasto */
+.layout-grid-container.resizing {
+    user-select: none;
+}
+
+.layout-grid-container.resizing * {
+    pointer-events: none;
+}
+

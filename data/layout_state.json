@@ -1,0 +1,107 @@
+{
+    "version": 2,
+    "windows": [
+        {
+            "id": "3dview_1778679503978_in5klhnya",
+            "typeId": "3dview",
+            "name": "3D View",
+            "icon": "🎥",
+            "tabs": [
+                "View",
+                "Animation",
+                "Scripting"
+            ],
+            "activeTab": "View",
+            "visible": true,
+            "content": [],
+            "context": {
+                "info": "",
+                "shortcuts": [],
+                "nPanelOpen": false,
+                "tPanelOpen": false
+            },
+            "floating": false,
+            "x": 20,
+            "y": 20,
+            "width": 460,
+            "height": 320,
+            "zIndex": 109,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "slot": {
+                "row": 0,
+                "col": 0
+            }
+        },
+        {
+            "id": "outliner_1778679529226_hbq7aj3id",
+            "typeId": "outliner",
+            "name": "Outliner",
+            "icon": "🌳",
+            "tabs": [
+                "All Scenes",
+                "Current File",
+                "Scenes"
+            ],
+            "activeTab": "All Scenes",
+            "visible": true,
+            "content": [],
+            "context": {
+                "info": "",
+                "shortcuts": [],
+                "nPanelOpen": false,
+                "tPanelOpen": false
+            },
+            "floating": false,
+            "x": 50,
+            "y": 50,
+            "width": 460,
+            "height": 320,
+            "zIndex": 110,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "slot": {
+                "row": 0,
+                "col": 1
+            }
+        },
+        {
+            "id": "uv_1778679531241_rrojud5tm",
+            "typeId": "uv",
+            "name": "UV Editor",
+            "icon": "🔲",
+            "tabs": [
+                "Image",
+                "Overlays",
+                "Display"
+            ],
+            "activeTab": "Image",
+            "visible": true,
+            "content": [],
+            "context": {
+                "info": "",
+                "shortcuts": [],
+                "nPanelOpen": false,
+                "tPanelOpen": false
+            },
+            "floating": false,
+            "x": 80,
+            "y": 80,
+            "width": 460,
+            "height": 320,
+            "zIndex": 111,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "slot": {
+                "row": 1,
+                "col": 0
+            }
+        }
+    ],
+    "activeWindow": "uv_1778679531241_rrojud5tm",
+    "windowOrder": [
+        "3dview_1778679503978_in5klhnya",
+        "outliner_1778679529226_hbq7aj3id",
+        "uv_1778679531241_rrojud5tm"
+    ]
+}
